@@ -6,9 +6,15 @@
 
 ## 石堆 · 中文版
 
-**石堆(Cairn)** 是一个**模式级架构框架**,面向多智能体、多会话研究/工程工作流的「浮筏时代」——即那种还没稳定下来、状态临时依赖对话历史和人的记忆的初期形态。它描述了浮筏时代的套件是什么、会怎么坏、需要什么样的纪律才能撑住、其交接和检查面应该是什么形状——**这样,读者可以按照这些模式,重建属于自己的套件**。
+**一句话,说人话**:如果你用 AI 助手(Claude、GPT,或别的)跟一个多角色、跨很多次对话的项目死磕过——写代码、做研究、跑实验、审计报告——你大概率遇到过这些场景:一次对话 session 结束或被压缩,上下文就没了,只能靠人重新手写一份很长的交接文档;不同角色(审计员、执行者、协调者)每次都发明一套新的汇报格式;某个文件到底算不算"最终版",全靠人记、全靠人问。
 
-这份框架**不发布任何套件**。它发布的是:一份套件必须回答的问题清单、一份状态描述必须遵循的词汇表、一份交接必须符合的骨架。名字、角色、套件数量、业务领域、工具选择、具体脚本——都留给读者自己填。
+> **"套件"是什么?** 本文里,「套件」指你实际搭出来、跑起来的那一整套东西:几个角色(人或 AI agent)、一批约定格式的文件、几个检查脚本、一份治理规则——合起来支撑一个跨很多次会话、持续几周几个月的项目。**石堆本身不是套件**;石堆是教你怎么设计套件的图纸。
+
+**石堆(Cairn)** 是一份**模式级架构规范**,回答的问题是:一个多智能体、多会话的工作套件,要有什么样的词汇、什么样的骨架、什么样的纪律,才能在会话不断中断、执行工具不断切换(不管你用的是哪家的编码助手或客户端)的情况下,还撑得住、还认得清自己在哪一步。**读者照着这些模式,搭建的是自己的套件——石堆自己不搭。**
+
+（类比:如果你听说过 "The Twelve-Factor App"——那份文档不运行任何应用,只讲一个应用该具备哪十二种特质。石堆做的是同一件事,只是把对象换成了"多智能体、跨会话的工作套件"。)
+
+这也是为什么它自称"框架"而非"套件":框架是元层——描述套件必须具备的**形状**;套件是你按框架搭出来的、真正在跑的**东西**。两者不矛盾,是两个层次。
 
 ### 这是什么
 
@@ -19,7 +25,7 @@
 
 ### 这不是什么
 
-- 不是一个套件。这里没有应用。
+- 不是一个套件——这里没有应用,不能跑。是**写下来的架构**,你读它、按它设计,而不是安装它、运行它。
 - 不是一份可执行工具集。这里没有脚本。
 - 不是一套工具。没有 `check` 二进制、没有生成器、没有状态文件。
 - 不对你的命名、角色或工具链发表意见。仓库里所有 `<system-name>` `<role>` `<suite>` 都是占位符,由你填。
@@ -87,9 +93,15 @@ Draft v0.1。License:**MIT**。首次公开发布,后续持续迭代。
 
 ## Cairn · English
 
-**Cairn** is a **pattern-level architecture** framework for suites in their **raft-era** — the pre-fixed state of multi-agent, multi-session research/engineering workflows. It describes what a raft-era suite is, what fails in it, what discipline holds it together long enough to survive, and what shape its handoffs and check surfaces must have — **so a reader can reconstruct their own suite from these patterns**.
+**Plain-language version**: if you've ever run a multi-role, multi-session project with an AI assistant (Claude, GPT, or otherwise) — writing code, doing research, running experiments, auditing reports — you've probably hit these: a chat session ends or gets compacted, and the context is just gone, so a human has to hand-write a long recovery document from memory; every role (auditor, executor, coordinator) invents its own report format each time; whether a file is "the final version" lives entirely in someone's head.
 
-This framework **does not ship a suite**. It ships the questions a suite must answer, the vocabulary its state descriptions must use, and the skeletons its handoffs must fit. Names, roles, count of suites, business domain, tool choices, and concrete scripts are all left to the reader.
+> **What's a "suite"?** In this document, a "suite" means the actual working system you build and run: a handful of roles (human or AI agent), a set of conventionally-formatted files, a few check scripts, a governance rule — together supporting a project that spans many sessions over weeks or months. **Cairn itself is not a suite.** Cairn is the blueprint for designing one.
+
+**Cairn** is a **pattern-level architecture** that answers one question: what vocabulary, what skeletons, what discipline does a multi-agent, multi-session suite need, so that it still holds together and still knows where it is — even as sessions keep ending and the execution tool keeps switching, whichever coding assistant or client happens to be in the driver's seat. **The reader builds their own suite from these patterns; Cairn does not build one for you.**
+
+(Analogy: if you know "The Twelve-Factor App" — that document doesn't run any application; it only states the twelve qualities an application should have. Cairn does the same thing, just for multi-agent, multi-session work suites instead of web apps.)
+
+This is also why it calls itself a "framework" rather than a "suite": the framework is the meta layer — it describes the **shape** a suite must have. A suite is the actual running **thing** you build to that shape. The two aren't contradictory; they're two different layers.
 
 ### What this is
 
@@ -100,7 +112,7 @@ This framework **does not ship a suite**. It ships the questions a suite must an
 
 ### What this is NOT
 
-- Not a suite. There is no application here.
+- Not a suite — there's no application here, nothing to run. It's a **written architecture**: something you read and design against, not something you install or execute.
 - Not a runnable kit. There are no scripts.
 - Not a set of tools. No `check` binary, no generator, no state file.
 - Not opinionated about your names, roles, or tooling. Every occurrence of `<system-name>`, `<role>`, `<suite>` in this repo is a placeholder for you to fill.
