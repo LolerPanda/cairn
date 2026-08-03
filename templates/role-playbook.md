@@ -1,4 +1,4 @@
-# role playbook 6 section
+# role playbook
 
 > **STUB** — awaits a future drafting pass. See sibling files for the framework's tone and non-goals.
 

@@ -1,4 +1,4 @@
-# targeted re audit request
+# scoped reconsideration request
 
 > **STUB** — awaits a future drafting pass. See sibling files for the framework's tone and non-goals.
 
