@@ -6,11 +6,11 @@ Five skeletons. Each defines the **shape** a raft-era suite must give an artifac
 
 ## PS-01 · Handoff frontmatter
 
-Every cross-session, cross-audience, or cross-machine handoff document begins with the same five-line machine-readable frontmatter. Format below is illustrative; any equivalent shape (YAML, TOML, JSON header) is acceptable as long as all five fields are present.
+Every cross-session, cross-audience, or cross-machine handoff document begins with the same five-line machine-readable frontmatter. Format below is illustrative; any equivalent shape (YAML, TOML, JSON header) is acceptable as long as all five fields are present. The anchor is detached: its digest excludes the anchor field itself, avoiding a self-referential hash.
 
 ```yaml
 ---
-anchor_sha: <sha256 of this file computed after write>
+anchor_sha: <sha256 of this file excluding this anchor_sha line>
 scope: <one-sentence handoff purpose>
 date: <ISO date>
 format_id: <handoff-shape name and version, e.g. auditor-review v1>
@@ -18,7 +18,7 @@ verify_status: <how the reader can independently confirm claims below>
 ---
 ```
 
-- **anchor_sha** — computed on-receipt by the reader; if it fails, the document has drifted from the version discussed elsewhere
+- **anchor_sha** — a detached digest computed over the file except this field; recomputed on receipt by the reader, and failed closed if it differs
 - **scope** — one sentence; a handoff that cannot state its scope in one sentence is trying to do too much
 - **date** — ISO date; time zones become their own failure class, use UTC
 - **format_id** — names the *shape*, not the audience; different audiences may share a shape
